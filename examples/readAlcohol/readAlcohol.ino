@@ -15,14 +15,14 @@
 #include "DFRobot_Alcohol.h"
 
 #define COLLECT_NUMBER   5                      // collect number, the collection range is 1-100
-#define Alcohol_I2C_Address ADDRESS_3
+#define ALCOHOL_I2C_ADDRESS ADDRESS_3
 /*   iic slave Address, The default is ADDRESS_3
-       ADDRESS_0               0x72             // iic device address
+       ADDRESS_0               0x72             // i2c device address
        ADDRESS_1               0x73
        ADDRESS_2               0x74
        ADDRESS_3               0x75
 */
-//DFRobot_Alcohol_I2C Alcohol(&Wire ,Alcohol_I2C_Address);
+//DFRobot_Alcohol_I2C Alcohol(&Wire ,ALCOHOL_I2C_ADDRESS);
 
 #ifdef ESP_PLATFORM
   // ESP32 user hardware uart
