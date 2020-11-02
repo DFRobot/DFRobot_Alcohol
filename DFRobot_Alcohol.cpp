@@ -44,8 +44,11 @@ int16_t DFRobot_Alcohol::ReadAlcohol(uint8_t Reg)
 {
   if(Uart_I2C_Flag == I2C_FLAG)
   {
-    readData(Reg ,readBuf ,2);
-    return ((int16_t)readBuf[0] << 8) + readBuf[1];
+    if(-1 == readData(Reg ,readBuf ,2)){
+      return -1;
+    }else{
+      return ((int16_t)readBuf[0] << 8) + readBuf[1];
+    }
   }
   else
   {
@@ -166,23 +169,27 @@ void DFRobot_Alcohol_I2C::writeData(uint8_t Reg ,uint8_t *Data ,uint8_t len)
   _pWire->endTransmission();
 }
 
-uint8_t DFRobot_Alcohol_I2C::readData(uint8_t Reg,uint8_t *Data,uint8_t len)
+int16_t DFRobot_Alcohol_I2C::readData(uint8_t Reg,uint8_t *Data,uint8_t len)
 {
   int i=0;
   _pWire->beginTransmission(this->_I2C_addr);
   _pWire->write(Reg);
-  _pWire->endTransmission();
+  if(_pWire->endTransmission() != 0)
+  {
+    return -1;
+  }
   _pWire->requestFrom((uint8_t)this->_I2C_addr,(uint8_t)len);
   while (_pWire->available())
   {
     Data[i++]=_pWire->read();
   }
+  return 0;
 }
 
 #ifdef ESP_PLATFORM
-  DFRobot_Alcohol_UART::DFRobot_Alcohol_UART(HardwareSerial *sSerial ,uint16_t Baud)
+  DFRobot_Alcohol_UART::DFRobot_Alcohol_UART(HardwareSerial *hSerial ,uint16_t Baud)
   {
-    this->_serial = sSerial;
+    this->_serial = hSerial;
     this->_Baud = Baud;
     Uart_I2C_Flag = UART_FLAG;
   }
@@ -220,7 +227,7 @@ void DFRobot_Alcohol_UART::writeData(uint8_t Reg ,uint8_t *Data ,uint8_t len)
   }
 }
 
-uint8_t DFRobot_Alcohol_UART::readData(uint8_t Reg,uint8_t *Data,uint8_t len)
+int16_t DFRobot_Alcohol_UART::readData(uint8_t Reg,uint8_t *Data,uint8_t len)
 {
   uint8_t i = 0;
   memset(readBuf,0,DATA_LEN);

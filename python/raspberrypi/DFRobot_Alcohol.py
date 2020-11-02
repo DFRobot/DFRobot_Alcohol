@@ -152,15 +152,23 @@ class DFRobot_Alcohol_I2C(DFRobot_Alcohol):
     @param value written data
   '''
   def write_reg(self, reg, data):
-    self.i2cbus.write_i2c_block_data(self.__addr ,reg ,data)
-
+    while 1:
+      try:
+        self.i2cbus.write_i2c_block_data(self.__addr ,reg ,data)
+        return
+      except:
+        print("please check connect!")
+        time.sleep(1)
   '''
     @brief read the data from the register
     @param reg register address
     @param value read data
   '''
   def read_reg(self, reg ,len):
-    rslt = self.i2cbus.read_i2c_block_data(self.__addr ,reg ,len)
+    try:
+      rslt = self.i2cbus.read_i2c_block_data(self.__addr ,reg ,len)
+    except:
+      rslt = -1
     return rslt
 
 class DFRobot_Alcohol_UART(DFRobot_Alcohol): 

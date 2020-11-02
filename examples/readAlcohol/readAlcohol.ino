@@ -22,8 +22,8 @@
        ADDRESS_2               0x74
        ADDRESS_3               0x75
 */
-//DFRobot_Alcohol_I2C Alcohol(&Wire ,ALCOHOL_I2C_ADDRESS);
-
+DFRobot_Alcohol_I2C Alcohol(&Wire ,ALCOHOL_I2C_ADDRESS);
+/*
 #ifdef ESP_PLATFORM
   // ESP32 user hardware uart
   // RX io16
@@ -36,7 +36,7 @@
   SoftwareSerial              mySerial(10 ,11);
   DFRobot_Alcohol_UART Alcohol(&mySerial ,9600);
 #endif
-
+*/
 void setup() 
 {
   Serial.begin(9600);

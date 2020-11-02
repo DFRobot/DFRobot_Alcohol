@@ -52,7 +52,7 @@ private:
   uint8_t  _M_Flag = 0;
 
   virtual void writeData(uint8_t Reg ,uint8_t *Data ,uint8_t len) = 0;
-  virtual uint8_t readData(uint8_t Reg ,uint8_t *Data ,uint8_t len) = 0;
+  virtual int16_t readData(uint8_t Reg ,uint8_t *Data ,uint8_t len) = 0;
 };
 
 class DFRobot_Alcohol_I2C:public DFRobot_Alcohol{
@@ -61,7 +61,7 @@ public:
   bool begin(void);
 protected:
   virtual void writeData(uint8_t Reg ,uint8_t *Data ,uint8_t len);
-  virtual uint8_t readData(uint8_t Reg ,uint8_t *Data ,uint8_t len);
+  virtual int16_t readData(uint8_t Reg ,uint8_t *Data ,uint8_t len);
 private:
   TwoWire *_pWire;
   uint8_t _I2C_addr;
@@ -70,7 +70,7 @@ private:
 class DFRobot_Alcohol_UART:public DFRobot_Alcohol{
 public:
 #ifdef ESP_PLATFORM
-  DFRobot_Alcohol_UART(HardwareSerial *sSerial ,uint16_t Baud);
+  DFRobot_Alcohol_UART(HardwareSerial *hSerial ,uint16_t Baud);
 #else
   DFRobot_Alcohol_UART(SoftwareSerial *sSerial ,uint16_t Baud);
 #endif
@@ -78,7 +78,7 @@ public:
   bool begin(void);
 protected:
   virtual void writeData(uint8_t Reg ,uint8_t *Data ,uint8_t len);
-  virtual uint8_t readData(uint8_t Reg ,uint8_t *Data ,uint8_t len);
+  virtual int16_t readData(uint8_t Reg ,uint8_t *Data ,uint8_t len);
 private:
 #ifdef ESP_PLATFORM
   HardwareSerial *_serial;

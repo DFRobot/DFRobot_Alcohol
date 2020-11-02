@@ -51,7 +51,7 @@ Download the zip file first to use this library and uncompress it to a folder na
   * @param sSerial is uart Class
   * @param Baud is uart baud
   */
-   DFRobot_Alcohol_UART(HardwareSerial *sSerial ,uint16_t Baud);
+   DFRobot_Alcohol_UART(HardwareSerial *hSerial ,uint16_t Baud);
 
  /*
   * @brief initialization parameters for i2c or uart.
