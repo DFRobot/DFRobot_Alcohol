@@ -1,9 +1,9 @@
-#DFRobot_Alcohol
+# DFRobot_Alcohol
 - [English Version](./README.md)
 
 这是一款Arduino兼容的酒精浓度传感器模组，测量范围0-5ppm，支持I2C和UART两种输出方式，经过出厂标定，可以快速、准确的测量环境中酒精蒸汽的浓度。适用于酒驾检测、汽车智能化及其他小浓度场景下的酒精蒸汽浓度检测。
 
-![正反面svg效果图](resources\images\sen0376.jpg)
+![正反面svg效果图](resources/images/sen0376.jpg)
 
 
 ## 产品链接（https://www.dfrobot.com.cn/goods-2995.html）
