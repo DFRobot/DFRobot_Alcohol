@@ -1,5 +1,5 @@
 # DFRobot_Alcohol
-- [中文版](./README_CN.md)
+- [中文版](./README.md)
 
 This is an Arduino-compatible alcohol concentration sensor module, with a measurement range of 0-5ppm, and supports both I2C and UART output methods. After factory calibration, it can quickly and accurately measure the concentration of alcohol vapor in the environment. It is suitable for alcohol vapor concentration detection in drunk driving detection, automobile intelligence and other low-concentration scenarios. 
 
