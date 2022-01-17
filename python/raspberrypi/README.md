@@ -1,65 +1,71 @@
-# DFRobot alcohol concentration sensor
+# DFRobot_Alcohol
+- [中文版](./README_CN.md)
 
-This RaspberryPi alcohol sensor board can communicate with RaspberryPi via I2C or uart.<br>
-alcohol sensor can measure data from 0-5 PPM.<br>
-alcohol sensor Long service life.<br>
-alcohol sensor Excellent stability and anti-interference.<br>
-alcohol sensor High sensitivity and low power consumption.<br>
-alcohol sensor  Temperature compensation, excellent linear output.<br>
+This is an Arduino-compatible alcohol concentration sensor module, with a measurement range of 0-5ppm, and supports both I2C and UART output methods. After factory calibration, it can quickly and accurately measure the concentration of alcohol vapor in the environment. It is suitable for alcohol vapor concentration detection in drunk driving detection, automobile intelligence and other low-concentration scenarios. 
 
-## DFRobot alcohol Library for RaspberryPi
+![效果图](../../resources/images/sen0376.jpg)
 
-Provide the Raspberry Pi library for the DFRobot_alcohol module.
+## Product Link（https://www.dfrobot.com/product-2186.html）
+
+    SKU：SEN0376
 
 ## Table of Contents
 
-* [Summary](#summary)
-* [Feature](#feature)
-* [Installation](#installation)
-* [Methods](#methods)
-* [History](#history)
-* [Credits](#credits)
+* [Summary](#Summary)
+* [Installation](#Installation)
+* [Methods](#Methods)
+* [Compatibility](#Compatibility)
+* [History](#History)
+* [Credits](#Credits)
 
 ## Summary
 
-alcohol module.
-
-## Feature
-
-1. The module has two modes, one is active data acquisition and the other is passive data acquisition. <br>
-2. You can measure the concentration of alcohol in the air. <br>
+Using the electrochemical principle, it has been calibrated before leaving the factory, which can accurately measure the alcohol concentration in the environment. And it has the characteristics of strong anti-interference ability, high stability and high sensitivity, and has a service life of up to two years. Resolution can reach 0.01ppm (10ppb), support 3.3~5.5V wide voltage input, with two data output types: I2C and UART。
 
 ## Installation
-
-This Sensor should work with DFRobot_alcohol on RaspberryPi. <br>
-Run the program:
-
-```
-$> python get_alcohol_data.py
-```
+Download the library file before use, paste it into the custom directory for Raspberry Pi, then open the examples folder and run the demo in the folder.
 
 ## Methods
 
-```py
+```python
+  '''!
+    @brief set the mode
+    @param MEASURE_MODE_AUTOMATIC  active mode
+    @param MEASURE_MODE_PASSIVE    passive mode
+  '''
+  def set_mode(self, mode):
 
-  def set_mode(self ,mode):
-    '''
-      @brief Set mode active or passive
-      @param mode: MEASURE_MODE_AUTOMATIC or MEASURE_MODE_PASSIVE(active or passive)
-    '''
-
-  def get_alcohol_data(self ,collectnum):
-    '''
-      @brief get the alcohol data,units of PPM
-      @param collectnum: Collect the number
-      @return  alcohol concentration, (PPM)
-    '''
+  '''!
+    @brief get the alcohol data, units of PPM
+    @param collectnum Collect the number
+    @return  alcohol concentration, (units PPM)
+  '''
+  def get_alcohol_data(self, collectnum):
 
 ```
+
+## Compatibility
+
+* RaspberryPi Version
+
+| Board        | Work Well | Work Wrong | Untested | Remarks |
+| ------------ | :-------: | :--------: | :------: | ------- |
+| RaspberryPi2 |           |            |    √     |         |
+| RaspberryPi3 |     √     |            |          |         |
+| RaspberryPi4 |           |            |    √     |         |
+
+* Python Version
+
+| Python  | Work Well | Work Wrong | Untested | Remarks |
+| ------- | :-------: | :--------: | :------: | ------- |
+| Python2 |     √     |            |          |         |
+| Python3 |     √     |            |          |         |
+
+
 ## History
 
-September 9, 2020 - Version 1.0 released.
+- 2020/9/9 - V1.0.0 Version
 
 ## Credits
 
-Written by ZhixinLiu(zhixin.liu@dfrobot.com), 2020. (Welcome to our website)
+Written by ZhixinLiu(zhixin.liu@dfrobot.com), 2020. (Welcome to our [website](https://www.dfrobot.com/))

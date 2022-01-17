@@ -1,98 +1,79 @@
-# DFRobot_AlcoholSensor
-DFRobot's AlcoholSensor
+# DFRobot_Alcohol
+- [中文版](./README_CN.md)
 
-## DFRobot_AlcoholSensor Library for Arduino
----------------------------------------------------------
-Arduino library is provided for reading alcohol concentrations through I2C or uart.
-Used to read the alcohol concentrations of the current module
+This is an Arduino-compatible alcohol concentration sensor module, with a measurement range of 0-5ppm, and supports both I2C and UART output methods. After factory calibration, it can quickly and accurately measure the concentration of alcohol vapor in the environment. It is suitable for alcohol vapor concentration detection in drunk driving detection, automobile intelligence and other low-concentration scenarios. 
+![效果图](resources/images/sen0376.jpg)
 
+
+## Product Link（https://www.dfrobot.com/product-2186.html）
+
+    SKU：SEN0376
 
 ## Table of Contents
 
-* [Installation](#installation)
-* [Methods](#methods)
-* [Compatibility](#compatibility)
-* [History](#history)
-* [Credits](#credits)
+* [Summary](#Summary)
+* [Installation](#Installation)
+* [Methods](#Methods)
+* [Compatibility](#Compatibility)
+* [History](#History)
+* [Credits](#Credits)
 
-<snippet>
-<content>
+## Summary
+
+Using the electrochemical principle, it has been calibrated before leaving the factory, which can accurately measure the alcohol concentration in the environment. And it has the characteristics of strong anti-interference ability, high stability and high sensitivity, and has a service life of up to two years. Resolution can reach 0.01ppm (10ppb), support 3.3~5.5V wide voltage input, with two data output types: I2C and UART。
 
 ## Installation
-
-To use this library download the zip file, uncompress it to a folder named DFRobot_AlcoholSensor.
-Download the zip file first to use this library and uncompress it to a folder named DFRobot_AlcoholSensor.
+There are two methods for using this library:<br>
+1. Open Arduino IDE, search for "DFRobot_Alcohol" on the status bar in Tools ->Manager Libraries and install the library.<br>
+2. Download the library file before use, paste it into \Arduino\libraries directory, then open the examples folder and run the demo in the folder.<br>
 
 ## Methods
 
 ```C++
- /*
-  * @brief initialization parameters for i2c.
-  * @param Wire is I2C Class
-  * @param Alcohol_I2C_Address is i2c address
-  */
-   DFRobot_Alcohol_I2C  Alcohol(&Wire, Alcohol_I2C_Address);
-
- /* @brief Initializes the soft serial port
+ /**
+  * @fn mySerial
+  * @brief Initializes the soft serial port
   * @param RX is uart receive io
   * @param TX is uart tranfer io
+  * @return None
   */
    mySerial(RX, TX);
 
- /*
-  * @brief initialization parameters for arduino software uart.
-  * @param sSerial is uart Class
-  * @param Baud is uart baud
-  */
-   DFRobot_Alcohol_UART Alcohol(SoftwareSerial *sSerial ,uint16_t Baud)
+  /**
+   * @fn setModes
+   * @brief Set mode Active or passive measurement.
+   * @param mode mode is Active or passive.
+   * @n       MEASURE_MODE_AUTOMATIC    active  mode
+   * @n       MEASURE_MODE_PASSIVE      passive mode
+   * @return None
+   */
+  void setModes(uint8_t mode);
 
- /*
-  * @brief initialization parameters for ESP32 hardware uart.
-  * @param sSerial is uart Class
-  * @param Baud is uart baud
-  */
-   DFRobot_Alcohol_UART(HardwareSerial *hSerial ,uint16_t Baud);
-
- /*
-  * @brief initialization parameters for i2c or uart.
-  * @return true and false.
-  */
-   bool begin();
-
- /*
-  * @brief Set mode Active or passive measurement.
-  *
-  * @param Mode is Active or passive.
-  *    MEASURE_MODE_AUTOMATIC                 // active  mode
-  *    MEASURE_MODE_PASSIVE                   // passive mode
-  */
-   void SetModes(uint8_t Mode);
-
- /*
-  * @brief read Alcohol data.
-  *
-  * @param CollectNum is the number of data collected,(The default value is 20)
-  *    COLLECT_NUMBER                         // The collection range is 1-100
-  *
-  * @return Alcohol concentration: one part per million (PPM).
-  */
-   float ReadAlcoholData(uint8_t CollectNum = 20);
+  /**
+   * @fn readAlcoholData
+   * @brief read Alcohol data.
+   * @param collectNum is the number of data collected,(The default value is 20)
+   * @n       COLLECT_NUMBER       The collection range is 1-100
+   * @return Alcohol concentration: one part per million (PPM).
+   */
+  float readAlcoholData(uint8_t collectNum = 20);
 
 ```
+
 ## Compatibility
 
-MCU                | Work Well | Work Wrong | Untested  | Remarks
------------------- | :----------: | :----------: | :---------: | -----
-FireBeetle-ESP32  |      √       |             |            | 
-ATMEGA2560  |      √       |             |            | 
-Arduino uno |       √      |             |            | 
-Leonardo  |      √       |              |             | 
+MCU                | Work Well    | Work Wrong   | Untested    | Remarks
+------------------ | :----------: | :----------: | :---------: | :----:
+Arduino Uno        |      √       |              |             |
+Arduino MEGA2560   |      √       |              |             |
+Arduino Leonardo   |      √       |              |             |
+FireBeetle-ESP32   |      √       |              |             |
+Micro:bit          |              |              |      √      |
+
 
 ## History
 
-- September 9, 2020 - Version 1.0 released.
-
-
+- 2020/9/9 - V1.0.0 Version
 ## Credits
 
 Written by ZhixinLiu(zhixin.liu@dfrobot.com), 2020. (Welcome to our [website](https://www.dfrobot.com/))
