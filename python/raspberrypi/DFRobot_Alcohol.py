@@ -6,7 +6,7 @@
   @license The MIT License (MIT)
   @author [ZhixinLiu](zhixin.liu@dfrobot.com)
   @version V1.0
-  date 2020-09-09
+  @date 2020-09-09
   @url https://github.com/DFRobot/DFRobot_Alcohol
 '''
 import serial
