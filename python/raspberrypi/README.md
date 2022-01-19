@@ -5,7 +5,7 @@ This is an Arduino-compatible alcohol concentration sensor module, with a measur
 
 ![效果图](../../resources/images/sen0376.jpg)
 
-## Product Link（https://www.dfrobot.com/product-2186.html）
+## Product Link(https://www.dfrobot.com/product-2186.html)
 
     SKU：SEN0376
 

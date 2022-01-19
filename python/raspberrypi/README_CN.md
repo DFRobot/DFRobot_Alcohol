@@ -6,7 +6,7 @@
 ![正反面svg效果图](../../resources/images/sen0376.jpg)
 
 
-## 产品链接（https://www.dfrobot.com.cn/goods-2995.html）
+## 产品链接(https://www.dfrobot.com.cn/goods-2995.html)
 
     SKU：SEN0376
 
